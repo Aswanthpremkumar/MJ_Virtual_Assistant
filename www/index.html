@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MJ</title>
 
+    <!--logo-->
+    <link rel="shortcut icon" href="assets/logo-image/logo.ico" type="image/x-icon">
     <!-- Bootsrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <!-- Bootsrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
     <!-- Particle js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"
@@ -24,47 +28,93 @@
 
 <body>
 
-    <section id="Oval" class="mb-4">
+    <div class="container">
 
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <div class="d-flex justify-content-center align-items-center" style="height:80vh;">
-                    
-                    <canvas id="canvasOne" width="700" height="420" style="position: absolute;"></canvas>
-                    
-                    <div id="MJ">
-                        <div class="square">
-                            <span class="circle"></span>
-                            <span class="circle"></span>
-                            <span class="circle"></span>
+
+
+
+        <section id="Oval" class="mb-4">
+
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <div class="d-flex justify-content-center align-items-center" style="height:80vh;">
+
+                        <canvas id="canvasOne" width="700" height="420" style="position: absolute;"></canvas>
+
+                        <div id="MJ">
+                            <div class="square">
+                                <span class="circle"></span>
+                                <span class="circle"></span>
+                                <span class="circle"></span>
+                            </div>
+
                         </div>
 
                     </div>
+                    <h5 class="text-light text text-center">Ask me anything</h5>
 
+                    <div class="col-md-12 mt-4 pt-4">
+                        <div class="text-center">
+                            <div id="TextInput" class="d-flex">
+
+                                <input type="text" class="input-field" name="chatbox" id="chatbox"
+                                    placeholder="Type here...">
+                                <button id="Micbtn" class="glow-on-hover"><i class="bi bi-mic"></i></button>
+                                <button id="Chatbtn" class="glow-on-hover"><i class="bi bi-chat"></i></button>
+                                <button id="Settingbtn" class="glow-on-hover"><i class="bi bi-gear"></i></button>
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <h5 class="text-light text text-center">Ask me anything</h5>
+                <div class="col-md-1"></div>
             </div>
-            <div class="col-md-1"></div>
-        </div>
-    </section>
+        </section>
 
+        <section id="SiriWave" class="mb-4" hidden>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+                            <div class="">
+                                <p class="text-start text-light mb-4 siri-message">Hello! I'm MaryJane(MJ)</p>
+                                <div id="siri-container"></div>
+                           
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
     <!--Jquery  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!--bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
+    <!--siriwave-->
+    <script src="https://unpkg.com/siriwave/dist/siriwave.umd.min.js"></script>
 
     <!-- Particle js -->
-     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <script src="script.js"></script>
     <!--texallate js-->
     <script src="assets/vendore/textillate-master/jquery.fittext.js"></script>
     <script src="assets/vendore/textillate-master/jquery.lettering.js"></script>
     <script src="http://jschr.github.io/textillate/jquery.textillate.js"></script>
 
-    <script src="main.js"></script>
+    
 
+    <script src="main.js"></script>
+    <script src="controller.js"></script>
+    <script src="/eel.js"></script>
 
 </body>
 
