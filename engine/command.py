@@ -4,12 +4,14 @@ import eel
 import time
 
 def speak(text):
+    text=str(text)
     engine = pyttsx3.init()
     voices=engine.getProperty('voices')
     engine.setProperty('voice',voices[1].id)
     engine.setProperty('rate',160)
     eel.DisplayMessage(text)
     engine.say(text)
+    eel.receiverText(text)
     engine.runAndWait()
 
 @eel.expose
@@ -35,10 +37,18 @@ def takecommand():
     return query.lower()
 
 @eel.expose
-def allcommands():
-    try:
+def allcommands(message=1):
+
+    if message==1:
         query= takecommand()
         print(query)
+        eel.senderText(query)
+
+    else:
+        query=message
+        eel.senderText(query)
+    try:
+        
         if"open" in query:
             from engine.features import openCommand
             openCommand(query)
@@ -66,7 +76,10 @@ def allcommands():
                 whatsApp(contact_no, query, message, name)
         
         else:
-            print("not run")
+            from engine.features import chatBot
+            
+            chatBot(query)
+            
 
 
     except:

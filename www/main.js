@@ -56,5 +56,59 @@ $(document).ready(function () {
         }
     }
     document.addEventListener('keyup', doc_keyUp, false);
+
+    function PlayAssistant(message) {
+
+        if (message != "") {
+
+            $("#Oval").attr("hidden", true);
+            $("#SiriWave").attr("hidden", false);
+            eel.allcommands(message);
+            $("#chatbox").val("")
+            $("#Micbtn").attr('hidden', false);
+            $("#Sendbtn").attr('hidden', true);
+
+        }
+
+    }
+
+        // toogle fucntion to hide and display mic and send button 
+    function ShowHideButton(message) {
+        if (message.length == 0) {
+            $("#Micbtn").attr('hidden', false);
+            $("#Sendbtn").attr('hidden', true);
+        }
+        else {
+            $("#Micbtn").attr('hidden', true);
+            $("#Sendbtn").attr('hidden', false);
+        }
+    }
+
+    // key up event handler on text box
+    $("#chatbox").keyup(function () {
+
+        let message = $("#chatbox").val();
+        ShowHideButton(message)
+    
+    });
+    
+    // send button event handler
+    $("#Sendbtn").click(function () {
+    
+        let message = $("#chatbox").val()
+        PlayAssistant(message)
+    
+    });
+    
+
+    // enter press event handler on chat box
+    $("#chatbox").keypress(function (e) {
+        key = e.which;
+        if (key == 13) {
+            let message = $("#chatbox").val()
+            PlayAssistant(message)
+        }
+    });
+
     
 });

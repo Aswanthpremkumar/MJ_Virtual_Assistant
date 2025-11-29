@@ -14,10 +14,10 @@ import pyaudio
 import pyautogui as autogui
 import pywhatkit as kit
 import pvporcupine
-
+import keyboard
 from engine.helper import extract_yt_term, remove_words
 
-
+from hugchat import hugchat
 
 con=sqlite3.connect("mj.db")
 cursor=con.cursor()
@@ -102,10 +102,8 @@ def hotword():
             keyword_index = porcupine.process(pcm)
             if keyword_index >= 0:
                 print("Hotword detected!")
-                autogui.keyDown("win")
-                autogui.press("j")
-                time.sleep(2)
-                autogui.keyUp("win")
+                keyboard.press_and_release('windows + j')  # 🔥 Correct wake key
+                time.sleep(1)
 
     except Exception as e:
         print("Error:", e)
@@ -141,31 +139,32 @@ def findContact(query):
 
 def whatsApp(mobile_no, message, flag, name):
 
-    if flag == 'message':
-        MJ_message = "message send successfully to " + name
-        click_coords = (500, 700)   # Example coords for message send button
-    elif flag == 'call':
-        message = ''
-        MJ_message = "calling to " + name
-        click_coords = (600, 200)   # Example coords for call button
-    else:
-        message = ''
-        MJ_message = "starting video call with " + name
-        click_coords = (650, 250)   # Example coords for video call button
-
     encoded_message = quote(message)
-    print(encoded_message)
-
     whatsapp_url = f"whatsapp://send?phone={mobile_no}&text={encoded_message}"
-    full_command = f'start "" "{whatsapp_url}"'
-
-    subprocess.run(full_command, shell=True)
+    subprocess.run(f'start "" "{whatsapp_url}"', shell=True)
+    time.sleep(2)
+    subprocess.run(f'start "" "{whatsapp_url}"', shell=True)
     time.sleep(5)
-    subprocess.run(full_command, shell=True)
+    
+    if flag == 'message':
+        autogui.hotkey('enter')
+        speak(f"Message sent successfully to {name}")
 
-    autogui.hotkey('enter')
+    elif flag == 'call':
+        autogui.click(1825, 84)
+        speak(f"Calling {name}")
 
-    # Directly click instead of tabbing
-    autogui.click(click_coords)
+    elif flag == 'video':
+        autogui.click(1764, 88)
+        speak(f"Starting video call with {name}")
 
-    speak(MJ_message)
+
+def chatBot(query):
+    user_input = query.lower()
+    chatbot = hugchat.ChatBot(cookie_path="engine\cookies.json")
+    id = chatbot.new_conversation()
+    chatbot.change_conversation(id)
+    response =  chatbot.chat(user_input)
+    print(response)
+    speak(response)
+    return response
