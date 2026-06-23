@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# MJ Virtual Assistant secrets
+engine/cookies.json
+.env
+mj.db
+
+# Virtual environment
+envmj/
+venv/
+
+# IDE files
+.vscode/
+.idea/
