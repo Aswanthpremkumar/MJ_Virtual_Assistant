@@ -75,7 +75,7 @@ def hotword():
 
     try:
         
-        access_key = "9aI6IXWUsrhGgqokmIV+DjwdTlxu7QzqyNsUjwxLNNfDyGE0LH9QWg=="
+        access_key = "ACCESS KEY"
         keyword_path = os.path.join("models", "hey_mj.ppn")
 
         porcupine = pvporcupine.create(
@@ -102,7 +102,7 @@ def hotword():
             keyword_index = porcupine.process(pcm)
             if keyword_index >= 0:
                 print("Hotword detected!")
-                keyboard.press_and_release('windows + j')  # 🔥 Correct wake key
+                keyboard.press_and_release('windows + j') 
                 time.sleep(1)
 
     except Exception as e:
