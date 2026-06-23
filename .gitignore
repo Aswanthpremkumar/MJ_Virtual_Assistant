@@ -1,5 +1,24 @@
-/envmj
-contacts.csv
+# Python
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+envmj/
+venv/
+ENV/
+
+# Secrets
+engine/cookies.json
+.env
+
+# Database
 mj.db
-/engine/__pycache__
-/engine/cookies.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
